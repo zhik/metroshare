@@ -17,7 +17,7 @@ date: 1/30/15
 
 	<script type="text/javascript" src="assets/js/d3.js"></script>
 
-	<title>Welcome to MetroShare!</title>
+	<title>Sheetsee Maps Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900,400italic|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
@@ -27,6 +27,10 @@ date: 1/30/15
     <script type='text/javascript' src='assets/js/sheetsee.js'></script>
     <link rel='stylesheet' type='text/css' href='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.css'  />
     <!-- <link rel='stylesheet' type='text/css' href='assets/css/style.css'> -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css">
+
   </head>
   <style>
     #map, #shapesmap {max-width: 800px; height: 500px;}
@@ -38,34 +42,7 @@ date: 1/30/15
 
 </head>
 <body>
-	<!--Facebook SDK begins-->
-	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=776978105712094&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-	</script>
-	<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '776978105712094',
-      xfbml      : true,
-      version    : 'v2.2'
-    });
-  };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-<!--Facebook SDK Ends-->
 
 	<div id="headerwrap">
 	    <div class="container">
@@ -73,13 +50,10 @@ date: 1/30/15
 				<div class="col-lg-8 col-lg-offset-2">
 					<h1>WELCOME TO METRO SHARE</h1>
 				</div>
-				<!--Facebook Like Button-->
-				<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true">
-				</div>
-				<!--Facebook Like Button ENDS-->	
+
 				<div class="col-lg-8 col-lg-offset-2 himg">
-					<img src="img/MetroSharlogo.png" class="img-responsive">
-					<h5>In NYC, one in three poor New Yorkers can't afford public transit. At MetroShare, we strive to create a lasting solution to poverty through the exchange of metrocards. We intend to do this by creating a platform that will allow our users to share a monthly, unlimited metrocard.</h5>	
+					<!-- <img src="img/MetroSharlogo.png" class="img-responsive"> -->
+					<h3>In NYC, one in three poor New Yorkers can't afford public transit. At MetroShare, we strive to create a lasting solution to poverty through the exchange of metrocards. We intend to do this by creating a platform that will allow our users to share a monthly, unlimited metrocard.</h3>	
 				</div>
 			</div>
 	    </div> 
@@ -90,8 +64,7 @@ date: 1/30/15
 
 			<br><br>
 
-	  <div class="container" class="col-lg-8">
-      <h1>map</h1>
+	  <div class="container">
       <p><em><a href="https://docs.google.com/spreadsheet/ccc?key=0Au1H4573Ie5BdEIzOFcyOEtnRFQzd2lFODZnNHBTQmc&usp=drive_web#gid=0" target="_blank">spreadsheet</a></em><p>
       <div id="map"></div>
       <!-- <p><em>
@@ -99,15 +72,110 @@ date: 1/30/15
       <h2>Using linestrings, polygons and multipolygons</h2>
       <div id="shapesmap"></div>
       <p><em><a onClick='window.location="view-source:" + window.location.href'>View Source</a> // <a href="https://docs.google.com/spreadsheets/d/1jOz6yFY5nIDre5RYtVROYPgIbkgh9lIddsyXo0-79_0/edit?usp=drive_web" target="_blank">View Spreadsheet</a></em></p>-->
+      <br><br>
       	</div>
+     	 <div class="col-lg-6">
+<form method="post" action="shareride.html" enctype="text/plain">
+   <fieldset>
+   <legend><span>1</span> Tell us about you!</legend>
+     
+      <label for="name">Name:</label>   
+      <input type="text" id="name" name="user_name" placeholder="Full Name">
+      
+      <label for="last">User Name:</label>
+      <input type="text" id="last" name="user_nickname" placeholder="Choose UserName">
+       
+      <label for="email">E-mail</label>  
+      <input type="email" id="email" name="user_email" placeholder="Name@Example.com">
+      
+      <a href="shareride.html" "target=_blank">
+      <button>
+        <input type="submit" name="create-account" value="Create Account">
+      </button>
+      </a>
+     
+   </fieldset> 
+    
+    </form>
+		 </div>
+		 <div class="col-lg-6">
+      <form method="post" action="mailto:miguelposada@my.com" enctype="text/plain">
 
-     	 <div class="col-lg-4">
- 			<h4>list.</h4>	
+
+	   <fieldset>
+	   <legend><span>2</span>What station are you going to?</legend>
+	     
+	    <label for="dateorder">Drop off Stattion</label>    
+	    <div class="train-direction">
+	     <input type="radio" name="uptown-train" value="uptown" id="traindirection"><label for="traindirection">Uptown</label>
+	     </div>
+	     <div class="train-direction">
+	      <input type="radio" name="downtown-train" value="Downtown" id="traindirection"><label for="traindirection">Downtown</label>
+	     </div>
+	      
+	    <select name="select_trainstop">
+	      <option value="Pelham Bay Park" selected>Pelham Bay Park</option> 
+	      <option value="Buhre Ave">Buhre Ave</option>
+	      <option value="Middletown Rd">Middletown Rd</option>
+	      <option value="Westchester Square-E Tremont Ave">Westchester Square-E Tremont Ave</option>
+	      <option value="Zerega Ave">Zerega Ave</option>
+	      <option value="Castle Hill Ave">Castle Hill Ave</option>
+	      <option value="Parkchester">Parkchester</option>
+	      <option value="Saint Lawrence Ave">Saint Lawrence Ave</option>
+	      <option value="Morrison Ave.-Soundview">Morrison Ave.-Soundview</option>
+	      <option value="Elder Ave">Elder Ave</option>
+	      <option value="Whitlock Ave">Whitlock Ave</option>
+	      <option value="Hunts Point Ave">Hunts Point Ave</option>
+	      <option value="Longwood Ave">Longwood Ave</option>
+	      <option value="E 149 St">E 149 St</option>
+	      <option value="E 143 St.-Saint Mary's St">E 143 St.-Saint Mary's St</option>
+	      <option value="Cypress Ave">Cypress Ave</option>
+	      <option value="Brook Ave">Brook Ave</option>
+	      <option value="3 Ave.-138 St">3 Ave.-138 St</option>
+	      <option value="125 St">125 St</option>
+	      <option value="116 St">116 St</option>
+	      <option value="110 St">110 St</option>
+	      <option value="103 St">103 St</option>
+	      <option value="96 St">96 St</option>
+	      <option value="86 St">86 St</option>
+	      <option value="77 St">77 St</option>
+	      <option value="68 St.-Hunter College">68 St.-Hunter College</option>
+	      <option value="59 St">59 St</option>
+	      <option value="51 St">51 St</option>
+	      <option value="Grand Central-42 St">Grand Central-42 St</option>
+	      <option value="33 St">33 St</option>
+	      <option value="28 St">28 St</option>
+	      <option value="23 St">23 St</option>
+	      <option value="4 St.-Union Square">14 St.-Union Square</option>
+	      <option value="Astor Place">Astor Place</option>
+	      <option value="Bleecker St.-Broadway-Lafayette St">Bleecker St.-Broadway-Lafayette St</option>
+	      <option value="Spring St">Spring St</option>
+	      <option value="Canal St">Canal St</option>
+	      <option value="Brooklyn Bridge-City Hall">Brooklyn Bridge-City Hall</option>  
+	  </select>
+	     
+	    <label for="dateorder">Date:</label>    
+	    <input type="date" id="dateride" name="date_ride">
+	    
+	    <label for="time">Time:</label>  
+	    <input type="time" id="time" name="time_arrive" placeholder="Estimate time to arrive">
+	    
+	    <button>
+	    <input type="submit" value="Share Ride">
+	    </button>
+	   
+
+	   </fieldset>  
+	  
+ </form>
+
+
+
 		 </div>
 
 		<br><br>
 	</div>
-
+</div>
 	<div>
 		<p>Disclaimer: This dosen't work for now</p>
 	</div>
@@ -121,9 +189,8 @@ date: 1/30/15
       })
 
       function showInfo(data) {
-        var optionsJSON = ["placename", "photo-url"]
-        var template = "<ul><li><a href='{{photo-url}}' target='_blank'>"
-                     + "<img src='{{photo-url}}'></a></li>"
+        var optionsJSON = ["placename", "people"]
+        var template = "<ul><li><p>{{people}}</p></li>"
                      + "<li><h4>{{placename}}</h4></li></ul>"
         var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
         var map = Sheetsee.loadMap("map")
