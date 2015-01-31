@@ -20,6 +20,15 @@ s
 </head>
 <body>
 	<!--Facebook SDK begins-->
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=776978105712094&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	</script>
 	<script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -50,7 +59,7 @@ s
 				</div>
 				<!--Facebook Like Button ENDS-->	
 				<div class="col-lg-8 col-lg-offset-2 himg">
-					<img src="assets/img/browser.png" class="img-responsive">
+					<img src="img/MetroSharlogo.png" class="img-responsive">
 					<h5>In NYC, one in three poor New Yorkers can't afford public transit. At MetroShare, we strive to create a lasting solution to poverty through the exchange of metrocards. We intend to do this by creating a platform that will allow our users to share a monthly, unlimited metrocard.</h5>	
 				</div>
 			</div>
