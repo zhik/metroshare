@@ -9,13 +9,32 @@ date: 1/30/15
 
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-s
+
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
 	<script type="text/javascript" src="assets/js/d3.js"></script>
+
+	<title>Sheetsee Maps Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900,400italic|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="favicon.png">
+    <script type='text/javascript' src='assets/js/tabletop1.3.4.js'></script>
+    <script type='text/javascript' src='assets/js/sheetsee.js'></script>
+    <link rel='stylesheet' type='text/css' href='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.css'  />
+    <!-- <link rel='stylesheet' type='text/css' href='assets/css/style.css'> -->
+  </head>
+  <style>
+    #map, #shapesmap {max-width: 800px; height: 500px;}
+    .leaflet-popup-content li {list-style:none;}
+    .leaflet-popup-content {width: 102px;}
+    .leaflet-popup-content img {width: 100px;}
+    a {border: none;}
+  </style>
 
 </head>
 <body>
@@ -57,20 +76,23 @@ s
 	    </div> 
 	</div>
 
-	<div class="container w">
+	<div class="container">
 		<div class="row centered">
 			<br><br>
-			<div class="col-lg-8">
- 					<h4>map.</h4>
- 					
-			</div>
+	  <div class="container" class="col-lg-8">
+      <h1>All Pennies  Map</h1>
+      <p><em><a href="https://docs.google.com/a/github.com/spreadsheet/ccc?key=10DyeBWP-Xuw1_jSZIfBzEJzxwqEVeyVqHdg9NM3U2nI&usp=drive_web#gid=0" target="_blank">spreadsheet</a></em><p>
+      <div id="map"></div>
+      <p><em><a onClick='window.location="view-source:" + window.location.href'>View Source</a> // <a href="../docs/sheetsee-maps.html">View Documentation</a></em></p>
+      <h2>Using linestrings, polygons and multipolygons</h2>
+      <div id="shapesmap"></div>
+      <p><em><a onClick='window.location="view-source:" + window.location.href'>View Source</a> // <a href="https://docs.google.com/spreadsheets/d/1jOz6yFY5nIDre5RYtVROYPgIbkgh9lIddsyXo0-79_0/edit?usp=drive_web" target="_blank">View Spreadsheet</a></em></p>
+      	</div>
 
-			<div class="col-lg-4">
- 					<h4>list.</h4>
- 					
-			</div>
+     	 <div class="col-lg-4">
+ 			<h4>list.</h4>	
+		 </div>
 
-		</div>
 		<br><br>
 	</div>
 
@@ -78,6 +100,35 @@ s
 		<p>Disclaimer: This dosen't work for now</p>
 	</div>
 
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var URL = "0Ao5u1U6KYND7dGN5QngweVJUWE16bTRob0d2a3dCbnc"
+        var URL2 = "1jOz6yFY5nIDre5RYtVROYPgIbkgh9lIddsyXo0-79_0"
+        Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+        Tabletop.init( { key: URL2, callback: shapesMap, simpleSheet: true } )
+      })
+
+      function showInfo(data) {
+        var optionsJSON = ["placename", "photo-url"]
+        var template = "<ul><li><a href='{{photo-url}}' target='_blank'>"
+                     + "<img src='{{photo-url}}'></a></li>"
+                     + "<li><h4>{{placename}}</h4></li></ul>"
+        var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
+        var map = Sheetsee.loadMap("map")
+        Sheetsee.addTileLayer(map, 'examples.map-20v6611k')
+        Sheetsee.addMarkerLayer(geoJSON, map, template)
+      }
+
+      function shapesMap(data) {
+        var opts = ['description']
+        var geojson = Sheetsee.createGeoJSON(data, opts)
+        var plytemplate = "<h4>{{description}}</h4>"
+        var shapesmap = Sheetsee.loadMap("shapesmap")
+        Sheetsee.addTileLayer(shapesmap, 'examples.map-20v6611k')
+        Sheetsee.addMarkerLayer(geojson, shapesmap, plytemplate)
+      }
+
+    </script>
 
 </body>
 </html>
